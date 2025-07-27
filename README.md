@@ -1,45 +1,54 @@
 # Enterprise SSD DVT Test Framework
 
-A comprehensive test management framework for Enterprise SSD Design Verification Testing (DVT).
+Enterprise SSD Design Verification Testing framework with Node.js web interface and Python test execution.
 
-## Architecture
+## 🚀 Quick Access - Live Demo
 
-- **Top Level**: Node.js web platform with React frontend
-- **Second Level**: Python test execution modules
-- **Database**: PostgreSQL for production, SQLite for development
+- **Frontend Dashboard:** https://test-framework-app-bxejmipt.devinapps.com
+- **Backend API:** https://app-avocdewb.fly.dev
 
-## Test Categories
+## How to Run Locally
 
-Based on the Enterprise SSD DVT test plan-v01.xlsx:
+### Prerequisites
+- Node.js 18+
+- Python 3.12+
+- Poetry (install with: `pip install poetry`)
 
-1. **Data Integrity** - IO Stress testing with Single/Multi Namespace
-2. **Robustness** - Reset Handling (SPO/BOOT/NPO/PWRDIS, PERST/NSSR/HOT Reset, FLR/CTRL Reset, Composite POR)
-3. **Functionality** - NVMe, OCP, Security, NVMe-MI, SMBus, Time To Ready
-4. **Reliability** - RDT, eRDT, 4corner testing, WAF Endurance (RandW.4k, JEDEC)
-5. **Compatibility** - Boot Drive, Data Drive, System Robustness, Certification
-6. **Compliance** - UNH-IOL, Oakgate DT, Sanblaze Cert, ULINK, Quarch, NVMe-MI, PCIe
-7. **Performance/Power** - Synthetic, Real world, and Customer workloads
-
-## Project Structure
-
-```
-enterprise-ssd-dvt-framework/
-├── web-platform/          # Node.js + React web interface
-├── python-test-modules/    # Python test execution modules
-├── docs/                   # Documentation
-└── README.md
+### Step 1: Clone Repository
+```bash
+git clone https://github.com/tiger423/enterprise-ssd-dvt-framework.git
+cd enterprise-ssd-dvt-framework
 ```
 
-## Getting Started
+### Step 2: Start Backend (Terminal 1)
+```bash
+cd dvt-backend
+poetry install
+poetry run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+```
+Backend runs at: http://localhost:8000
 
-1. Set up the web platform (Node.js + React)
-2. Configure Python test modules
-3. Initialize database schema
-4. Configure test hardware interfaces
+### Step 3: Start Frontend (Terminal 2)
+```bash
+cd dvt-frontend
+npm install
+npm run dev
+```
+Frontend runs at: http://localhost:5173
 
-## Development
+### Step 4: Access Application
+Open http://localhost:5173 in your browser to use the test dashboard.
 
-- Web Platform: Node.js + Express + React + TypeScript
-- Test Modules: Python 3.12+
-- Database: PostgreSQL/SQLite
-- Real-time: Socket.IO
+## What You Can Do
+
+- **Run Tests:** Boot Drive, Data Drive, System Robustness, Certification
+- **Monitor Progress:** Real-time test status updates
+- **View Results:** Detailed test results and metrics
+- **Configure Tests:** Adjust test parameters and settings
+
+## API Documentation
+- Swagger UI: http://localhost:8000/docs
+- API Endpoints: http://localhost:8000/redoc
+
+---
+**Repository:** https://github.com/tiger423/enterprise-ssd-dvt-framework
